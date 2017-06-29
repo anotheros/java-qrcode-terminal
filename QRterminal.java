@@ -22,7 +22,7 @@ public class QRterminal {
 		qrParam.put(EncodeHintType.CHARACTER_SET, "utf-8");
 		try {
 			BitMatrix bitMatrix = new MultiFormatWriter().encode(text, BarcodeFormat.QR_CODE, width, height, qrParam);
-			s = toAsciiBitmap(MatrixToImageWriter.toBufferedImage(bitMatrix));
+			s = toAscii(MatrixToImageWriter.toBufferedImage(bitMatrix));
 		} catch (WriterException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -30,7 +30,7 @@ public class QRterminal {
 		return s;
 	}
 
-	public static String toAsciiBitmap(BufferedImage bim) {
+	public static String toAscii(BufferedImage bim) {
 		StringBuilder sb = new StringBuilder();
 		for (int rows = 0; rows < bim.getHeight(); rows++) {
 			for (int cols = 0; cols < bim.getWidth(); cols++) {
